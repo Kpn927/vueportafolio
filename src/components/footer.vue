@@ -1,8 +1,9 @@
 <template>
   <footer class="footer">
-    <div class="image-container">
+    <!-- Ahora, la imagen est\xE1 dentro de un router-link que usa la nueva prop -->
+    <router-link v-if="imagenpath" :to="imageRoute" class="image-container">
       <img :src="imagenpath" alt="Mascota del Footer" class="footer-image" />
-    </div>
+    </router-link>
     
     <div class="footer-content">
       <div class="contact-info">
@@ -32,6 +33,8 @@
 </template>
 
 <script setup>
+import { defineProps } from 'vue';
+import { RouterLink } from 'vue-router'; 
 
 const props = defineProps({
   email: {
@@ -64,10 +67,18 @@ const props = defineProps({
     required: false,
     default:'/TETO.PNG',
   },
+  imageRoute: {
+    type: String,
+    required: false,
+    default: '/',
+  },
 });
 </script>
 
 <style scoped>
+/* Importa los íconos de Font Awesome */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
 .footer {
   background-color: #605c5c;
   color: #ecf0f1;
@@ -84,6 +95,7 @@ const props = defineProps({
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
+  cursor: pointer; /* Indica que es un elemento interactivo */
 }
 
 .footer-image {

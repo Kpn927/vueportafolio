@@ -19,6 +19,7 @@
       github="https://github.com/Kpn927/"
       copyright="Mi portafolio, hecho por Daniel Sosa."
       imagenpath="teto.png"
+      imageRoute="/teto"
     />
 
   </div>

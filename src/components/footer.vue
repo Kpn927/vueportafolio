@@ -1,8 +1,6 @@
 <template>
   <footer class="footer">
-    <!-- Contenedor para la imagen posicionada absolutamente -->
     <div class="image-container">
-      <!-- Ahora el src se vincula correctamente con v-bind o su abreviatura ':' -->
       <img :src="imagenpath" alt="Mascota del Footer" class="footer-image" />
     </div>
     
@@ -27,8 +25,6 @@
         </a>
       </div>
     </div>
-    
-    <!-- Aviso de derechos de autor -->
     <div class="copyright">
       <span>&copy; {{ new Date().getFullYear() }} {{ copyright }}</span>
     </div>
@@ -72,17 +68,14 @@ const props = defineProps({
 </script>
 
 <style scoped>
-/* Importa los íconos de Font Awesome */
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
-
 .footer {
   background-color: #605c5c;
   color: #ecf0f1;
   padding: 1rem;
   margin-top: auto; 
   text-align: center;
-  position: relative; /* Clave para el posicionamiento absoluto de la imagen */
-  padding-top: 1rem; /* Añade espacio para que la imagen no se superponga con el contenido del footer */
+  position: relative;
+  padding-top: 1rem;
 }
 
 .image-container {
@@ -94,7 +87,7 @@ const props = defineProps({
 }
 
 .footer-image {
-  width: 120px; /* Ajusta el tamaño de la imagen */
+  width: 120px;
   height: auto;
 }
 

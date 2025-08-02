@@ -1,16 +1,12 @@
 <template>
-  <!-- Contenedor principal del carrusel -->
   <div class="slideshow-container">
-    <!-- Contenedor del elemento actual (imagen o video) -->
     <div class="slideshow-content">
-      <!-- Muestra una imagen si el tipo es 'image' -->
       <img
         v-if="currentSlide.type === 'image'"
         :src="currentSlide.src"
         :alt="currentSlide.caption"
         class="slideshow-image"
       />
-      <!-- Muestra un video de YouTube si el tipo es 'youtube' -->
       <iframe
         v-else-if="currentSlide.type === 'youtube'"
         class="slideshow-video"
@@ -19,20 +15,17 @@
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen
       ></iframe>
-      <!-- Muestra un mensaje si el tipo no es compatible -->
       <div v-else class="slideshow-placeholder">
         <p>Tipo de contenido no compatible.</p>
       </div>
     </div>
 
-    <!-- Título y descripci\xF3n del elemento actual -->
     <div class="slideshow-info">
       <h3 v-if="currentSlide.caption" class="slideshow-caption">
         {{ currentSlide.caption }}
       </h3>
     </div>
 
-    <!-- Botones de navegaci\xF3n -->
     <div class="slideshow-controls">
       <button @click="prevSlide" class="slideshow-button">&lt;</button>
       <button @click="nextSlide" class="slideshow-button">&gt;</button>
@@ -43,7 +36,6 @@
 <script setup>
 import { ref, computed } from 'vue';
 
-// Definici\xF3n de las propiedades del componente
 const props = defineProps({
   items: {
     type: Array,
@@ -63,41 +55,36 @@ const props = defineProps({
   },
 });
 
-// Estado para rastrear el \xEDndice de la diapositiva actual
 const currentSlideIndex = ref(0);
 
-// Propiedad computada para obtener el objeto de la diapositiva actual
 const currentSlide = computed(() => {
   return props.items[currentSlideIndex.value];
 });
 
-// Funci\xF3n para obtener la URL de inserci\xF3n de YouTube a partir de una URL regular
 const getYouTubeEmbedUrl = (url) => {
   try {
     const urlObj = new URL(url);
     const videoId = urlObj.searchParams.get('v');
     return `https://www.youtube.com/embed/${videoId}?autoplay=1`;
   } catch (e) {
-    console.error('URL de YouTube inv\xE1lida:', url, e);
+    console.error('URL de YouTube inválida:', url, e);
     return '';
   }
 };
 
-// M\xE9todo para avanzar a la siguiente diapositiva
 const nextSlide = () => {
   currentSlideIndex.value = (currentSlideIndex.value + 1) % props.items.length;
 };
 
-// M\xE9todo para retroceder a la diapositiva anterior
 const prevSlide = () => {
   currentSlideIndex.value = (currentSlideIndex.value - 1 + props.items.length) % props.items.length;
 };
 </script>
 
 <style scoped>
+
 .slideshow-container {
   max-width: 800px;
-  margin: 2rem auto;
   position: relative;
   border-radius: 12px;
   overflow: hidden;
@@ -107,8 +94,9 @@ const prevSlide = () => {
 }
 
 .slideshow-content {
+  position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9; /* Mantener una relaci\xF3n de aspecto 16:9 para videos e im\xE1genes */
+  padding-top: 56.25%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -117,9 +105,12 @@ const prevSlide = () => {
 
 .slideshow-image,
 .slideshow-video {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Asegura que la imagen/video cubra el contenedor */
+  object-fit: cover;
 }
 
 .slideshow-placeholder {
@@ -157,7 +148,7 @@ const prevSlide = () => {
   background-color: rgba(44, 62, 80, 0.7);
   border: none;
   color: #ecf0f1;
-  font-size: 2rem;
+  font-size: 1.5rem;
   padding: 0.5rem 1rem;
   cursor: pointer;
   border-radius: 8px;
@@ -171,7 +162,7 @@ const prevSlide = () => {
 
 @media (max-width: 600px) {
   .slideshow-button {
-    font-size: 1.5rem;
+    font-size: 1rem;
     padding: 0.3rem 0.6rem;
   }
 }

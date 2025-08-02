@@ -78,9 +78,6 @@ const navButtons = computed(() => {
 </script>
 
 <style scoped>
-/* Importa la fuente pixelada para un estilo retro */
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
 .front-page {
   display: flex;
   flex-direction: column;

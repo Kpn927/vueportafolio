@@ -75,15 +75,15 @@ const goToHome = () => {
   padding: 2rem;
   background-color: #444;
   border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Sombra más pronunciada */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
   color: #fff;
-  border: 1px solid #C9202F; /* Un borde sutil para destacar el formulario */
+  border: 1px solid #C9202F;
 }
 
 h2 {
   text-align: center;
   margin-bottom: 2rem;
-  color: #C9202F; /* Color principal de Teto para el título */
+  color: #C9202F;
 }
 
 .form-group {
@@ -110,8 +110,8 @@ input[type="password"] {
 
 input[type="text"]:focus,
 input[type="password"]:focus {
-  border-color: #C9202F; /* Destaca el input cuando está activo */
-  outline: none; /* Elimina el contorno predeterminado del navegador */
+  border-color: #C9202F;
+  outline: none;
 }
 
 .login-button, .back-button { 
